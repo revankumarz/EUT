@@ -1,0 +1,237 @@
+/* ============ Global ============ */
+body {
+  background: #f3f4f8;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.auth-bg {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(17, 24, 39, 0.10);
+}
+
+/* ============ Left Panel ============ */
+.left-panel {
+  width: 40%;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0f2fe 100%);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.brand-logo-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #2563eb;
+  display: inline-block;
+}
+
+.brand-logo-text {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.left-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.left-desc {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.left-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.check-icon {
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+/* ============ Right Panel ============ */
+.right-panel {
+  width: 60%;
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.form-sub {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ============ Inputs ============ */
+.form-input {
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  border-color: #e5e7eb;
+  border-radius: 8px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border-color: #2563eb;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 10;
+}
+
+/* ============ Buttons ============ */
+.btn-purple {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.btn-purple:hover { background: #1d4ed8; color: #fff; }
+
+.btn-blue {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.btn-blue:hover { background: #1d4ed8; color: #fff; }
+
+/* ============ Links ============ */
+.link-blue {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+.link-blue:hover { text-decoration: underline; }
+
+/* ============ Divider + Social ============ */
+.divider-text {
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+.divider-text::before,
+.divider-text::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+.divider-text span { padding: 0 0.75rem; }
+
+.social-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.social-btn {
+  flex: 1;
+  max-width: 100px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.social-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* ============ Dashboard ============ */
+.dashboard-container { min-height: 100vh; }
+.dashboard-card {
+  max-width: 560px;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
+}
+.info-tile {
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 767px) {
+  .left-panel { display: none; }
+  .right-panel { width: 100%; }
+  .auth-wrapper { border-radius: 16px; }
+}
