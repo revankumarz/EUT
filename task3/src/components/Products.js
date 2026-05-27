@@ -1,16 +1,34 @@
+import { useState, useEffect } from 'react';
+
 function Products() {
   const products = [
-    { img: '/images/c1.avif', title: 'Money Plant, Scindapsus (Pack of 3) - Plant', price: 758, original: 947, discount: 20, rating: 4, reviews: 155 },
-    { img: '/images/c2.avif', title: 'Set of 2 Mesmerising Flower Plants', price: 598, original: 748, discount: 20, rating: 4.5, reviews: 19 },
-    { img: '/images/c3.avif', title: 'Top 5 Easiest to Grow Plants', price: 1130, original: 1507, discount: 25, rating: 4, reviews: 54 },
-    { img: '/images/c4.avif', title: 'Top 3 Mosquito Repellent Plants', price: 980, original: 1225, discount: 20, rating: 4, reviews: 31 },
-    { img: '/images/c5.avif', title: 'Top 5 Plants for Decoration on Auspicious Occasion', price: 1236, original: 1765, discount: 30, rating: 4, reviews: 36 },
-    { img: '/images/c6.avif', title: 'Premium Flower Bulbs Collection', price: 449, original: 599, discount: 25, rating: 4, reviews: 88 },
-    { img: '/images/c7.avif', title: 'Indoor Plant Starter Kit', price: 1499, original: 1999, discount: 25, rating: 5, reviews: 212 },
-    { img: '/images/c8.avif', title: 'Air Purifying Plants Combo', price: 899, original: 1199, discount: 25, rating: 4, reviews: 67 },
+    { img: '/images/c1.avif', title: 'Money Plant, Scindapsus (Pack of 3) - Plant', price: 758, rating: 4, reviews: 155 },
+    { img: '/images/c2.avif', title: 'Set of 2 Mesmerising Flower Plants', price: 598, rating: 4.5, reviews: 19 },
+    { img: '/images/c3.avif', title: 'Top 5 Easiest to Grow Plants', price: 1130, rating: 4, reviews: 54 },
+    { img: '/images/c4.avif', title: 'Top 3 Mosquito Repellent Plants', price: 980, rating: 4, reviews: 31 },
+    { img: '/images/c5.avif', title: 'Top 5 Plants for Decoration on Auspicious Occasion', price: 1236, rating: 4, reviews: 36 },
+    { img: '/images/c6.avif', title: 'Premium Flower Bulbs Collection', price: 449, rating: 4, reviews: 88 },
+    { img: '/images/c7.avif', title: 'Indoor Plant Starter Kit', price: 1499, rating: 5, reviews: 212 },
+    { img: '/images/c8.avif', title: 'Air Purifying Plants Combo', price: 899, rating: 4, reviews: 67 },
   ];
 
-  const perSlide = 4;
+  const getPerSlide = () => {
+    if (typeof window === 'undefined') return 4;
+    const w = window.innerWidth;
+    if (w < 576) return 1;
+    if (w < 768) return 2;
+    if (w < 992) return 3;
+    return 4;
+  };
+
+  const [perSlide, setPerSlide] = useState(getPerSlide);
+
+  useEffect(() => {
+    const onResize = () => setPerSlide(getPerSlide());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const slides = [];
   for (let i = 0; i < products.length; i += perSlide) {
     slides.push(products.slice(i, i + perSlide));
@@ -30,11 +48,16 @@ function Products() {
   return (
     <section className="container my-5">
       <h3 className="text-center mb-4">Value For Money - Upto 35% Off</h3>
-      <div id="productsCarousel" className="carousel slide" data-bs-ride="carousel">
+      <div
+        key={perSlide}
+        id="productsCarousel"
+        className="carousel slide"
+        data-bs-ride="carousel"
+      >
         <div className="carousel-inner">
           {slides.map((slide, sIdx) => (
             <div key={sIdx} className={`carousel-item${sIdx === 0 ? ' active' : ''}`}>
-              <div className="row g-3 px-4">
+              <div className="row g-3 px-2 px-md-4">
                 {slide.map((p, idx) => (
                   <div key={`${sIdx}-${idx}`} className="col">
                     <div className="card h-100 border">
