@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-bar:hover .marquee-track { animation-play-state: paused; }
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.trending-card .trending-img-wrap {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.trending-card:hover .trending-img-wrap {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.decor-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.decor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.review-card {
+  transition: box-shadow 0.2s ease;
+}
+.review-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1) !important;
+}
+
+.footer-link {
+  transition: color 0.15s ease;
+}
+.footer-link:hover {
+  color: #ef4f5f !important;
+}
+
+.social-icon {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.social-icon:hover {
+  background-color: #ef4f5f !important;
+  transform: translateY(-2px);
+}
+
+.btn {
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+@media (max-width: 991.98px) {
+  .trending-card .trending-img-wrap {
+    width: 170px !important;
+    height: 170px !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .marquee-bar { font-size: 0.8rem !important; }
+
+  .trending-card .trending-img-wrap {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .trending-card p { font-size: 0.85rem; }
+
+  .decor-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    min-height: auto !important;
+  }
+  .decor-card img {
+    width: 100% !important;
+    height: 180px !important;
+    order: -1;
+  }
+  .decor-card h4 { font-size: 1.1rem; }
+
+  .review-card .card-body { padding: 0.75rem; }
+}
+
+@media (max-width: 575.98px) {
+  .trending-card .trending-img-wrap {
+    width: 110px !important;
+    height: 110px !important;
+  }
+  .marquee-bar { font-size: 0.75rem !important; }
+}
