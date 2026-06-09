@@ -14,7 +14,7 @@ function Trending() {
           <div key={it.label} className="col-6 col-md-3 text-center trending-card">
             <div
               className="mx-auto rounded-circle overflow-hidden shadow-sm trending-img-wrap"
-              style={{ width: '220px', height: '220px' }}
+              style={{ width: 'min(220px, 40vw)', height: 'min(220px, 40vw)' }}
             >
               <img
                 src={it.img}

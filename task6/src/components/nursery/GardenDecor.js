@@ -37,7 +37,7 @@ function GardenDecor() {
         {items.map((it) => (
           <div key={it.title} className="col-12 col-md-6">
             <div
-              className="d-flex align-items-center overflow-hidden rounded-3 decor-card"
+              className="d-flex flex-column flex-sm-row align-items-center overflow-hidden rounded-3 decor-card text-center text-sm-start"
               style={{
                 background: it.bg,
                 minHeight: '260px',
@@ -45,10 +45,10 @@ function GardenDecor() {
               }}
             >
               <div className="p-4" style={{ flex: 1 }}>
-                <h4 className="fw-bold mb-3">{it.title}</h4>
+                <h4 className="fw-bold mb-3" style={{ fontSize: '1.25rem' }}>{it.title}</h4>
                 <p className="mb-3 small">{it.desc}</p>
                 <button
-                  className="btn text-white fw-semibold px-3"
+                  className="btn text-white fw-semibold px-4 rounded-pill"
                   style={{ backgroundColor: '#ef4f5f' }}
                 >
                   Shop Now
@@ -58,7 +58,7 @@ function GardenDecor() {
                 src={it.img}
                 alt={it.title}
                 style={{
-                  width: '45%',
+                  width: 'min(100%, 220px)',
                   height: '260px',
                   objectFit: 'cover',
                   flexShrink: 0,
