@@ -1,0 +1,89 @@
+import { useSearch } from '../../context/SearchContext';
+
+function GardenDecor() {
+  const { searchQuery } = useSearch();
+  const items = [
+    {
+      title: 'Planters - Starting ₹129',
+      desc: 'Add color to your garden. 400+ pots of different colors, shapes, and materials.',
+      img: '/images/c5.avif',
+      bg: 'linear-gradient(135deg, #ddd6f3 0%, #f8d6c4 100%)',
+      textColor: '#333',
+    },
+    {
+      title: 'Soil & Fertilizers - Starting ₹100',
+      desc: 'Healthy food is a key for healthy plants. Choose from a wide range of soil and fertilizers.',
+      img: '/images/c3.avif',
+      bg: '#f5c842',
+      textColor: '#222',
+    },
+    {
+      title: 'Pebbles - Starting ₹79',
+      desc: 'Add visual and textural features to your garden with a wide range of natural pebbles.',
+      img: '/images/c2.avif',
+      bg: 'linear-gradient(135deg, #a8c8e0 0%, #fce0cf 100%)',
+      textColor: '#222',
+    },
+    {
+      title: 'Tools - Starting ₹129',
+      desc: 'Get a tool for every gardening activity and make it a fun experience.',
+      img: '/images/gardening.webp',
+      bg: '#c4724f',
+      textColor: '#fff',
+    },
+  ];
+
+  const filteredItems = items.filter(it => 
+    it.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    it.desc.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <section className="container my-5">
+      <h3 className="text-center mb-4">Garden Decor &amp; Care</h3>
+      {filteredItems.length > 0 ? (
+        <div className="row g-4">
+          {filteredItems.map((it) => (
+            <div key={it.title} className="col-12 col-md-6">
+              <div
+                className="d-flex flex-column flex-sm-row align-items-center overflow-hidden rounded-3 decor-card text-center text-sm-start"
+                style={{
+                  background: it.bg,
+                  minHeight: '260px',
+                  color: it.textColor,
+                }}
+              >
+                <div className="p-4" style={{ flex: 1 }}>
+                  <h4 className="fw-bold mb-3" style={{ fontSize: '1.25rem' }}>{it.title}</h4>
+                  <p className="mb-3 small">{it.desc}</p>
+                  <button
+                    className="btn text-white fw-semibold px-4 rounded-pill"
+                    style={{ backgroundColor: '#ef4f5f' }}
+                  >
+                    Shop Now
+                  </button>
+                </div>
+                <img
+                  src={it.img}
+                  alt={it.title}
+                  style={{
+                    width: 'min(100%, 220px)',
+                    height: '260px',
+                    objectFit: 'cover',
+                    flexShrink: 0,
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-4">
+          <p className="text-muted">No decor items match your search.</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+export default GardenDecor;
